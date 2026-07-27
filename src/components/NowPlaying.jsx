@@ -1,9 +1,9 @@
 import React from 'react'
 
-const NowPlaying = () => {
+const NowPlaying = ({onOpenDrawer}) => {
   return (
     <>
-      <button>open playlist</button>
+      <button onClick={onOpenDrawer}>open playlist</button>
       <img src="" alt="" />
 
       <div>
