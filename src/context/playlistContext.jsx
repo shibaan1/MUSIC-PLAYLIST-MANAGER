@@ -6,7 +6,6 @@ const initialState = {
     currentSongId: null,
     shuffle: false,
 
-
 }
 
 function PlaylistReducer(state, action) {
@@ -23,7 +22,6 @@ function PlaylistReducer(state, action) {
 
         default:
             return state
-
     }
 }
 
