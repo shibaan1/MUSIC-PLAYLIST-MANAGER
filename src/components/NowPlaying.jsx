@@ -1,15 +1,5 @@
 import React from 'react'
 
-
-// A button to open the playlist drawer (top left)
-// Album art (generic music icon for now)
-// Song title
-// Artist name
-// Progress bar with current time and total duration
-// Controls row: shuffle — previous — play/pause — next — loop
-
-// Write the HTML structure only. Use placeholder text like "Song Title", "Artist Name", "0:00" for now. No logic, no state, no props yet.
-
 const NowPlaying = () => {
   return (
     <>
