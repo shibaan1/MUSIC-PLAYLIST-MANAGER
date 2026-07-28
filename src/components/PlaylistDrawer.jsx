@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import SongForm from './SongForm'
 
-const PlaylistDrawer = ({isOpen, onClose}) => {
+const PlaylistDrawer = ({ isOpen, onClose }) => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <>
       {isOpen &&
@@ -9,7 +13,10 @@ const PlaylistDrawer = ({isOpen, onClose}) => {
 
           <div>
             <input type="search" placeholder='search song...' />
-            <button>add song</button>
+
+            <button onClick={() => setIsModalOpen(true)}>add song ++++</button>
+
+            {isModalOpen && <SongForm onClose= {() => setIsModalOpen(false)}/>}
           </div>
 
           <hr />

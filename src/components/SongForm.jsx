@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SongForm = () => {
+const SongForm = ({onClose}) => {
   return (
     <>
       <div className='modal-overlay'>
         <div className='modal-box'>
-          <button>close/cancel</button>
+          <button onClick={onClose}>close/cancel</button>
           <input type="text" placeholder='Song-Name' />
           <input type="text" placeholder='Artist Name' />
           <input type="url" placeholder='enter url' />
