@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PlaylistContext } from '../context/playlistContext'
 
-const SongItem = ({id, title , artist , url}) => {
+const SongItem = ({ id, title, artist, url }) => {
+
+  const { dispatch } = useContext(PlaylistContext)
   return (
     <div>
 
@@ -16,7 +19,7 @@ const SongItem = ({id, title , artist , url}) => {
         <button>⋮ menu</button>
 
         <div className='dropdown-menu'>
-          <button>Delete</button>
+          <button onClick={() => dispatch({ type: 'DELETE_SONG', payload: id })}>Delete</button>
           <button>play next</button>
           <button>move to top</button>
 
