@@ -1,14 +1,14 @@
 import React from 'react'
 
-const SongItem = () => {
+const SongItem = ({id, title , artist , url}) => {
   return (
     <div>
 
       <img src="" alt="" />
 
       <div>
-        <p>title</p>
-        <p>artist</p>
+        <p>{title}</p>
+        <p>{artist}</p>
       </div>
 
       <div>
