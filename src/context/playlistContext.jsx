@@ -69,6 +69,8 @@ function PlaylistReducer(state, action) {
 }
         case 'PLAY_NEXT':{
 
+            if (state.currentSongId === null) return state
+
             const songs2 = [...state.songs]
 
             const currpos = songs2.findIndex(song => song.id === state.currentSongId)

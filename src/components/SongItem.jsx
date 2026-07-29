@@ -20,8 +20,8 @@ const SongItem = ({ id, title, artist, url }) => {
 
         <div className='dropdown-menu'>
           <button onClick={() => dispatch({ type: 'DELETE_SONG', payload: id })}>Delete</button>
-          <button>play next</button>
-          <button>move to top</button>
+          <button onClick={() => dispatch({type: 'PLAY_NEXT' , payload:id})}>play next</button>
+          <button onClick={() => dispatch({type: 'MOVE_TO_TOP' , payload: id})}>move to top</button>
 
         </div>
       </div>
