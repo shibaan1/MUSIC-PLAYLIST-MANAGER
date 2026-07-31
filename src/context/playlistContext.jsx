@@ -5,6 +5,8 @@ const initialState = {
     isPlaying: false,
     currentSongId: null,
     shuffle: false,
+    currentTime: 0,
+    duration: 0
 
 }
 
@@ -69,21 +71,30 @@ function PlaylistReducer(state, action) {
 
                 return { ...state, songs: [currsong, ...remsongs] }
             }
-        case 'PLAY_NEXT': {
+        case 'PLAY_NEXT':
+            {
+                if (state.currentSongId === null) return state
 
-            if (state.currentSongId === null) return state
+                const songs2 = [...state.songs]
 
-            const songs2 = [...state.songs]
+                const currpos = songs2.findIndex(song => song.id === state.currentSongId)
+                const remind = songs2.findIndex(song => song.id === action.payload)
 
-            const currpos = songs2.findIndex(song => song.id === state.currentSongId)
-            const remind = songs2.findIndex(song => song.id === action.payload)
+                const [taregtSong] = songs2.splice(remind, 1)
+                songs2.splice(currpos + 1, 0, taregtSong)
 
-            const [taregtSong] = songs2.splice(remind, 1)
-            songs2.splice(currpos + 1, 0, taregtSong)
+                return { ...state, songs: songs2 }
+            }
 
-            return { ...state, songs: songs2 }
-        }
+        case 'SET_TIME':
+            {
+                return { ...state, currentTime: action.payload }
+            }
 
+        case 'SET_DURATION':
+            {
+                return { ...state, duration: action.payload }
+            }
         default:
             return state
     }
@@ -103,12 +114,20 @@ const PlaylistProvider = ({ children }) => {
 
         audioRef.current = new Audio(currSong.url)
 
+        audioRef.current.ontimeupdate = () => {
+            dispatch({ type: 'SET_TIME', payload: audioRef.current.currentTime })
+        }
+
+        audioRef.current.onloadedmetadata = () => {
+            dispatch({ type: 'SET_DURATION', payload: audioRef.current.duration })
+        }
+
         return () => {
             audioRef.current.pause()
         }
 
-    }, [state.currentSongId])
 
+    }, [state.currentSongId])
 
     useEffect(() => {
 
