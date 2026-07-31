@@ -1,31 +1,53 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
+import { PlaylistContext } from '../context/playlistContext'
 
-const NowPlaying = ({onOpenDrawer}) => {
+const NowPlaying = ({ onOpenDrawer }) => {
+
+  const { state, dispatch } = useContext(PlaylistContext)
+
+  const selectedSong = state.songs.find((song) => song.id === state.currentSongId)
+
+  function handleClick() {
+    if (state.isPlaying) {
+
+      dispatch({ type: 'PAUSE_SONG'  })
+    }
+    else {
+      dispatch({ type: 'PLAY_SONG', payload: selectedSong.id })
+    }
+
+  }
+
   return (
     <>
       <button onClick={onOpenDrawer}>open playlist</button>
       <img src="" alt="" />
 
-      <div>
-        <p>song title</p>
-        <p> artist name</p>
-      </div>
+      {!selectedSong ? (<p>no song to display</p>) : (
 
-      <div>
-        <span>0:00</span>
-        <div className='progressbar'>
-          <div className='progress-fill'></div>
+        <div>
+          <div>
+            <p>{selectedSong?.title}</p>
+            <p> {selectedSong?.artist}</p>
+          </div>
+
+          <div>
+            <span>0:00</span>
+            <div className='progressbar'>
+              <div className='progress-fill'></div>
+            </div>
+            <span>0:00</span>
+          </div>
+
+          <div>
+            <button>shuffle</button>
+            <button>previous</button>
+            <button onClick={handleClick}>play/pause</button>
+            <button>next</button>
+            <button>loop</button>
+          </div>
         </div>
-        <span>0:00</span>
-      </div>
-
-      <div>
-        <button>shuffle</button>
-        <button>previous</button>
-        <button>play/pause</button>
-        <button>next</button>
-        <button>loop</button>
-      </div>
+      )}
     </>
   )
 }
