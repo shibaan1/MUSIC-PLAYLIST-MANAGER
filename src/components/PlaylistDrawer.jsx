@@ -3,17 +3,32 @@ import SongForm from './SongForm'
 import { PlaylistContext } from '../context/playlistContext'
 import SongItem from './SongItem'
 
-// Import useContext from React and PlaylistContext
-// Import SongItem
-// Get state from context
-// Replace the three hardcoded song-item divs with state.songs.map()
-// Pass all required props to SongItem
-
 const PlaylistDrawer = ({ isOpen, onClose }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { state } = useContext(PlaylistContext)
+  const { state, dispatch } = useContext(PlaylistContext)
+  const currSong = state.songs.find((song) => song.id === state.currentSongId)
+  const progressPercent = (state.currentTime / state.duration) * 100
 
+
+  function handleclick() {
+    if (state.isPlaying) {
+      dispatch({ type: 'PAUSE_SONG' })
+    }
+
+    else {
+      dispatch({ type: 'PLAY_SONG', payload: state.currentSongId })
+    }
+  }
+
+  function timeConvert(inpTime) {
+    const minutes = Math.floor(inpTime / 60)
+    const seconds = Math.floor(inpTime % 60)
+
+    const frmtSec = String(seconds).padStart(2, '0')
+
+    return `${minutes}:${frmtSec}`
+  }
 
   return (
     <>
@@ -47,13 +62,13 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
 
           <div>
             <img src="" alt="" />
-            <p>song name</p>
-            <div className='progressbar'></div>
-            <button>play/pause</button>
+            <p>{currSong?.title}</p>
+            <div className='progressbar'>
+              <div className='progress-fill' style={{ width: `${progressPercent}%` }}></div>
+            </div>
+            <button onClick={handleclick}>play/pause</button>
           </div>
-
         </div>
-
       }
     </>
   )
