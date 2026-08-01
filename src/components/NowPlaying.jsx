@@ -59,6 +59,15 @@ const NowPlaying = ({ onOpenDrawer }) => {
     return `${minutes}:${frmtSec}`
   }
 
+  function handleShuffle() {
+
+    dispatch({ type: 'TOGGLE_SHUFFLE' })
+
+  }
+
+  function handleLoop() {
+    dispatch({ type: 'TOGGLE_LOOP' })
+  }
   return (
     <>
       <button onClick={onOpenDrawer}>open playlist</button>
@@ -81,11 +90,11 @@ const NowPlaying = ({ onOpenDrawer }) => {
           </div>
 
           <div>
-            <button>shuffle</button>
+            <button onClick={handleShuffle}>{state.shuffle === true ? ('SHUFFLE ON') : ('SHUFFLE OFF')}</button>
             <button onClick={handlePrevious}>previous</button>
             <button onClick={handleClick}>play/pause</button>
             <button onClick={handleNext}>next</button>
-            <button>loop</button>
+            <button onClick={handleLoop}>{state.loop === true ? ('LOOP ON') : ('LOOP OFF')}</button>
           </div>
         </div>
       )}

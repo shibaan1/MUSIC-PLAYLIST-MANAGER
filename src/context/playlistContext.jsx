@@ -1,12 +1,22 @@
 import React, { createContext, useEffect, useReducer, useRef } from 'react'
 
 const initialState = {
-    songs: [],
+    songs: [
+        { id: 1, title: 'Song 1', artist: 'Artist 1', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+        { id: 2, title: 'Song 2', artist: 'Artist 2', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+        { id: 3, title: 'Song 3', artist: 'Artist 3', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+        { id: 4, title: 'Song 4', artist: 'Artist 4', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+        { id: 5, title: 'Song 5', artist: 'Artist 5', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+        { id: 6, title: 'Song 6', artist: 'Artist 6', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+        { id: 7, title: 'Song 7', artist: 'Artist 7', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+
+    ],
     isPlaying: false,
     currentSongId: null,
     shuffle: false,
     currentTime: 0,
-    duration: 0
+    duration: 0,
+    loop: false
 
 }
 
@@ -95,6 +105,11 @@ function PlaylistReducer(state, action) {
             {
                 return { ...state, duration: action.payload }
             }
+
+        case 'TOGGLE_LOOP':
+            {
+                return { ...state, loop: !state.loop }
+            }
         default:
             return state
     }
@@ -106,6 +121,13 @@ const PlaylistProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(PlaylistReducer, initialState)
     const audioRef = useRef(null)
+    const loopRef = useRef(state.loop)
+
+    useEffect(() => {
+      
+        loopRef.current = state.loop
+    }, [state.loop])
+    
 
     useEffect(() => {
 
@@ -114,7 +136,7 @@ const PlaylistProvider = ({ children }) => {
 
         audioRef.current = new Audio(currSong.url)
 
-         if (state.isPlaying) {
+        if (state.isPlaying) {
             audioRef.current.play()
 
         }
@@ -127,6 +149,13 @@ const PlaylistProvider = ({ children }) => {
             dispatch({ type: 'SET_DURATION', payload: audioRef.current.duration })
         }
 
+        audioRef.current.onended = () => {
+
+            if (loopRef.current) {
+                audioRef.current.play()
+            }
+
+        }
         return () => {
             audioRef.current.pause()
         }
