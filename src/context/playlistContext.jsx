@@ -114,6 +114,11 @@ const PlaylistProvider = ({ children }) => {
 
         audioRef.current = new Audio(currSong.url)
 
+         if (state.isPlaying) {
+            audioRef.current.play()
+
+        }
+
         audioRef.current.ontimeupdate = () => {
             dispatch({ type: 'SET_TIME', payload: audioRef.current.currentTime })
         }
@@ -125,7 +130,6 @@ const PlaylistProvider = ({ children }) => {
         return () => {
             audioRef.current.pause()
         }
-
 
     }, [state.currentSongId])
 
