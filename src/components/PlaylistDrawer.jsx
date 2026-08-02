@@ -6,7 +6,11 @@ import SongItem from './SongItem'
 const PlaylistDrawer = ({ isOpen, onClose }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [searchResults, setSearchResults] = useState([])
+  const [searchText, setSearchText] = useState('')
+
   const { state, dispatch } = useContext(PlaylistContext)
+
   const currSong = state.songs.find((song) => song.id === state.currentSongId)
   const progressPercent = (state.currentTime / state.duration) * 100
 
@@ -30,6 +34,14 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
     return `${minutes}:${frmtSec}`
   }
 
+  async function handleSearch() {
+    const response = await fetch(`https://itunes.apple.com/search?term=${searchText}&media=music&limit=5`)
+    const data = await response.json()
+
+    setSearchResults(data.results)
+  }
+
+
   return (
     <>
       {isOpen &&
@@ -37,7 +49,12 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
           <button onClick={onClose}>close</button>
 
           <div>
-            <input type="search" placeholder='search song...' />
+            <input type="search" placeholder='search song...' value={searchText} onChange={(e) => { setSearchText(e.target.value) }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearch()
+                }
+              }} />
 
             <button onClick={() => setIsModalOpen(true)}>add song ++++</button>
 
@@ -45,6 +62,56 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
           </div>
 
           <hr />
+
+          <div>
+
+            {searchResults.length > 0 &&
+              (
+                <div className='SearchResult'>
+                  {searchResults.map((result) => (
+
+                    <div key={result.trackId}>
+                      <p>{result.trackName}</p>
+                      <p>{result.artistName}</p>
+                      <button onClick={() => {
+                        dispatch({
+                          type: 'ADD_SONG', payload: {
+
+                            id: Date.now(),
+                            title: result.trackName,
+                            artist: result.artistName,
+                            url: result.previewUrl,
+                            image: result.artworkUrl100
+
+                          }
+                        })
+                      }}>ADD</button>
+
+                    </div>
+
+                  ))}
+
+                </div>
+
+
+
+
+
+
+
+              )
+
+            }
+          </div>
+
+
+
+
+
+
+
+
+
 
           <div className='songList'>
 
