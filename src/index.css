@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #1a0f0f;
+    --bg-secondary: #2d1f1f;
+    --accent: #e8956d;
+    --text-primary: #ffffff;
+    --text-secondary: #a89090;
+    --border: rgba(255, 255, 255, 0.1);
+    --glass: rgba(255, 255, 255, 0.05);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    font-family: var(--font-body);
+}
