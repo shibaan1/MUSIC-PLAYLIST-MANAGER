@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react'
 import { PlaylistContext } from '../context/playlistContext'
+import './NowPlaying.css'
 
 const NowPlaying = ({ onOpenDrawer }) => {
 
@@ -69,36 +70,38 @@ const NowPlaying = ({ onOpenDrawer }) => {
     dispatch({ type: 'TOGGLE_LOOP' })
   }
   return (
-    <>
-      <button onClick={onOpenDrawer}>open playlist</button>
-      <img src="" alt="" />
+    <div className='now-playing'>
+      <button className='playlist-btn' onClick={onOpenDrawer}>open playlist</button>
+      <img src="" alt="" className='now-playing-img' />
 
       {!selectedSong ? (<p>no song to display</p>) : (
 
-        <div>
+        <div className='song-info'>
           <div>
-            <p>{selectedSong?.title}</p>
-            <p> {selectedSong?.artist}</p>
+            <p className='song-title'>{selectedSong?.title}</p>
+            <p className='song-artist'> {selectedSong?.artist}</p>
           </div>
 
-          <div>
+          <div className='progress-container'>
             <span>{timeConvert(state.currentTime)}</span>
             <div className='progressbar'>
-              <div className='progress-fill' style={{ width: `${progressPercent}%` }}></div>
+              <div className='progressbar-fill' style={{ width: `${progressPercent}%` }}></div>
             </div>
             <span>{timeConvert(state.duration)}</span>
           </div>
 
-          <div>
-            <button onClick={handleShuffle}>{state.shuffle === true ? ('SHUFFLE ON') : ('SHUFFLE OFF')}</button>
-            <button onClick={handlePrevious}>previous</button>
-            <button onClick={handleClick}>play/pause</button>
-            <button onClick={handleNext}>next</button>
-            <button onClick={handleLoop}>{state.loop === true ? ('LOOP ON') : ('LOOP OFF')}</button>
+          <div className='controls'>
+            <button className={`shuffle-btn ${state.shuffle ? 'active' : ''}`} onClick={handleShuffle}>{state.shuffle === true ? ('SHUFFLE ON') : ('SHUFFLE OFF')}</button>
+            <div className='main-ctrl-btn'>
+              <button className='previous-btn' onClick={handlePrevious}>previous</button>
+              <button className='play-btn' onClick={handleClick}>{state.isPlaying ?  '⏸' : '▶'}</button>
+              <button className='next-btn' onClick={handleNext}>next</button>
+            </div>
+            <button className={`loop-btn ${state.loop ? 'active' : ''}`} onClick={handleLoop}>{state.loop === true ? ('LOOP ON') : ('LOOP OFF')}</button>
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

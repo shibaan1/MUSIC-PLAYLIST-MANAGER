@@ -4,13 +4,14 @@
     box-sizing: border-box;
 }
 
+
 :root {
-    --bg-primary: #1a0f0f;
-    --bg-secondary: #2d1f1f;
-    --accent: #e8956d;
-    --text-primary: #ffffff;
-    --text-secondary: #a89090;
-    --border: rgba(255, 255, 255, 0.1);
+    --bg-primary: #aae9c0 ;
+    --bg-secondary: #74eb94;
+    --accent: #00cd3d;
+    --text-primary: #05441c;
+    --text-secondary: #061508;
+    --border: rgba(21, 129, 34, 0.963);
     --glass: rgba(255, 255, 255, 0.05);
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;

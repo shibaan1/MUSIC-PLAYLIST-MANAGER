@@ -131,7 +131,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
             <img src="" alt="" />
             <p>{currSong?.title}</p>
             <div className='progressbar'>
-              <div className='progress-fill' style={{ width: `${progressPercent}%` }}></div>
+              <div className='progressbar-fill' style={{ width: `${progressPercent}%` }}></div>
             </div>
             <button onClick={handleclick}>play/pause</button>
           </div>
