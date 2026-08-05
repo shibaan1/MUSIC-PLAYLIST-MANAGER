@@ -36,7 +36,6 @@ const NowPlaying = ({ onOpenDrawer }) => {
       nxtSong = state.songs[currSongInd + 1].id
     }
 
-
     dispatch({ type: 'PLAY_SONG', payload: nxtSong })
 
   }
@@ -94,7 +93,7 @@ const NowPlaying = ({ onOpenDrawer }) => {
             <button className={`shuffle-btn ${state.shuffle ? 'active' : ''}`} onClick={handleShuffle}>{state.shuffle === true ? ('SHUFFLE ON') : ('SHUFFLE OFF')}</button>
             <div className='main-ctrl-btn'>
               <button className='previous-btn' onClick={handlePrevious}>previous</button>
-              <button className='play-btn' onClick={handleClick}>{state.isPlaying ?  '⏸' : '▶'}</button>
+              <button className='play-btn' onClick={handleClick}>{state.isPlaying ? '⏸' : '▶'}</button>
               <button className='next-btn' onClick={handleNext}>next</button>
             </div>
             <button className={`loop-btn ${state.loop ? 'active' : ''}`} onClick={handleLoop}>{state.loop === true ? ('LOOP ON') : ('LOOP OFF')}</button>

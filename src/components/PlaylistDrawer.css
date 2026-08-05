@@ -1,0 +1,43 @@
+.playlist-drawer {
+    height: 100vh;
+    width: 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    overflow-y: auto;
+    border: 2px solid black;
+    background-color: var(--bg-primary);
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 25px 1px;
+}
+
+.searchbar {
+    width: 90%;
+    padding: 3px 3px;
+    margin: 3px 3px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+
+}
+
+.modal-btn {
+    padding: 5px 6px;
+    margin: 2px 12px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgb(163, 163, 163);
+
+}
+
+.modal-btn:hover {
+    background-color: var(--accent);
+}

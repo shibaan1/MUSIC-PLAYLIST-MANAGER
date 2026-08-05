@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import SongForm from './SongForm'
 import { PlaylistContext } from '../context/playlistContext'
 import SongItem from './SongItem'
+import './PlaylistDrawer.css'
 
 const PlaylistDrawer = ({ isOpen, onClose }) => {
 
@@ -25,6 +26,15 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
     }
   }
 
+  function handleinput(e) {
+
+    setSearchText(e.target.value)
+    if (e.target.value === '') {
+      setSearchResults([])
+
+    }
+  }
+
   function timeConvert(inpTime) {
     const minutes = Math.floor(inpTime / 60)
     const seconds = Math.floor(inpTime % 60)
@@ -45,18 +55,18 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
   return (
     <>
       {isOpen &&
-        <div>
-          <button onClick={onClose}>close</button>
+        <div className='playlist-drawer'>
+          <button className='close-btn' onClick={onClose}>close</button>
 
-          <div>
-            <input type="search" placeholder='search song...' value={searchText} onChange={(e) => { setSearchText(e.target.value) }}
+          <div className='search-container'>
+            <input className='searchbar' type="search" placeholder='search song...' value={searchText} onChange={(e) => handleinput(e)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   handleSearch()
                 }
               }} />
 
-            <button onClick={() => setIsModalOpen(true)}>add song ++++</button>
+            <button className='modal-btn' onClick={() => setIsModalOpen(true)}>add song ++++</button>
 
             {isModalOpen && <SongForm onClose={() => setIsModalOpen(false)} />}
           </div>
@@ -67,7 +77,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
 
             {searchResults.length > 0 &&
               (
-                <div className='SearchResult'>
+                <div className='Search-result'>
                   {searchResults.map((result) => (
 
                     <div key={result.trackId}>
@@ -86,32 +96,11 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
                           }
                         })
                       }}>ADD</button>
-
                     </div>
-
                   ))}
-
                 </div>
-
-
-
-
-
-
-
-              )
-
-            }
+              )}
           </div>
-
-
-
-
-
-
-
-
-
 
           <div className='songList'>
 
@@ -127,13 +116,13 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
             ))}
           </div>
 
-          <div>
-            <img src="" alt="" />
+          <div className='mini-player'>
+            <img className='mini-player-img' src="" alt="" />
             <p>{currSong?.title}</p>
             <div className='progressbar'>
               <div className='progressbar-fill' style={{ width: `${progressPercent}%` }}></div>
             </div>
-            <button onClick={handleclick}>play/pause</button>
+            <button className='mini-player-btn' onClick={handleclick}>{state.isPlaying ? '⏸' : '▶'}</button>
           </div>
         </div>
       }
