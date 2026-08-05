@@ -1,0 +1,95 @@
+.song-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 5px;
+    margin: 10px 5px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.song-img {
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+.item-info {
+    flex: 1;
+    margin-left: 25px;
+    padding: 5px;
+
+}
+
+.item-title {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    color: var(--text-secondary);
+}
+
+.item-artist {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.item-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.item-play-btn {
+    margin: 2px 2px;
+    padding: 2px 2px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.menu-btn {
+    margin: 2px 2px;
+    padding: 2px 2px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.menu-btn:hover,
+.item-play-btn:hover {
+    background-color: var(--accent);
+    box-shadow: 0px 0px 20px var(--accent);
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu{
+position: absolute;
+display: flex;
+flex-direction: column;
+background-color: var(--accent);
+color: beige;
+border: 2px solid var(--border);
+border-radius: 3px;
+padding: 4px 4px;
+z-index: 10;
+gap: 5px;
+top: 80%;
+right: 0;
+
+}
+
+/* position: absolute so it floats
+flex-direction: column
+Background color
+Border and border radius
+Some padding
+z-index so it appears on top */

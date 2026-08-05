@@ -1,11 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { PlaylistContext } from '../context/playlistContext'
+import './SongItem.css'
 
 const SongItem = ({ id, title, artist, url }) => {
 
   const { state, dispatch } = useContext(PlaylistContext)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  function handleDropdown() {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
 
   function handleClick() {
+
     if (state.currentSongId === id && state.isPlaying === true) {
       dispatch({ type: 'PAUSE_SONG' })
     }
@@ -15,25 +22,27 @@ const SongItem = ({ id, title, artist, url }) => {
     }
   }
   return (
-    <div>
+    <div className='song-item'>
 
-      <img src="" alt="" />
+      <img className='song-img' src="" alt="" />
 
-      <div>
-        <p>{title}</p>
-        <p>{artist}</p>
+      <div className='item-info'>
+        <p className='item-title'>{title}</p>
+        <p className='item-artist'>{artist}</p>
       </div>
 
-      <div>
-        <button onClick={handleClick}>play</button>
-        <button>⋮ menu</button>
+      <div className='item-controls'>
+        <button className='item-play-btn' onClick={handleClick}>play</button>
+        <button className='menu-btn' onClick={handleDropdown}>⋮ menu</button>
 
-        <div className='dropdown-menu'>
-          <button onClick={() => dispatch({ type: 'DELETE_SONG', payload: id })}>Delete</button>
-          <button onClick={() => dispatch({ type: 'PLAY_NEXT', payload: id })}>play next</button>
-          <button onClick={() => dispatch({ type: 'MOVE_TO_TOP', payload: id })}>move to top</button>
+        {isDropdownOpen && (
+          <div className='dropdown-menu'>
+            <button className='delete-btn' onClick={() => dispatch({ type: 'DELETE_SONG', payload: id })}>Delete</button>
+            <button className=' playnext-btn' onClick={() => dispatch({ type: 'PLAY_NEXT', payload: id })}>play next</button>
+            <button className='movetotop-btn' onClick={() => dispatch({ type: 'MOVE_TO_TOP', payload: id })}>move to top</button>
 
-        </div>
+          </div>
+        )}
       </div>
     </div>
   )
