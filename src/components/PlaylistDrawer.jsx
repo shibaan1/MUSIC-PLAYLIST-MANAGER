@@ -73,17 +73,17 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
 
           <hr />
 
-          <div>
+          <div className='result-container'>
 
             {searchResults.length > 0 &&
               (
-                <div className='Search-result'>
+                <div className='search-result'>
                   {searchResults.map((result) => (
 
-                    <div key={result.trackId}>
-                      <p>{result.trackName}</p>
-                      <p>{result.artistName}</p>
-                      <button onClick={() => {
+                    <div className='result-item' key={result.trackId}>
+                      <p className='result-trackName'>{result.trackName}</p>
+                      <p className='result-artistName'>{result.artistName}</p>
+                      <button className='result-add-btn' onClick={() => {
                         dispatch({
                           type: 'ADD_SONG', payload: {
 

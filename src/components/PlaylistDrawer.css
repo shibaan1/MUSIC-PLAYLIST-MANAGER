@@ -59,3 +59,51 @@
 .close-btn:hover {
     box-shadow: 0 0 20px red;
 }
+
+.result-container {
+    position: relative;
+}
+
+.search-result {
+    position: absolute;
+    max-height: 50vh;
+    overflow-y: auto;
+    width: 100%;
+    left: 3px;
+    z-index: 100;
+    background-color: var(--bg-primary);
+    border: 3px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--accent);
+}
+
+.result-item {
+    width: 95%;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 12px;
+    padding: 4px 12px;
+}
+
+.result-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.result-add-btn {
+    cursor: pointer;
+    margin: 2px 2px;
+    padding: 4px 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    background-color: transparent
+}
+
+.result-add-btn:hover {
+    background-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent);
+}

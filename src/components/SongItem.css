@@ -84,12 +84,4 @@ z-index: 10;
 gap: 5px;
 top: 80%;
 right: 0;
-
 }
-
-/* position: absolute so it floats
-flex-direction: column
-Background color
-Border and border radius
-Some padding
-z-index so it appears on top */
