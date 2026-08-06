@@ -71,17 +71,17 @@
     display: none;
 }
 
-.dropdown-menu{
-position: absolute;
-display: flex;
-flex-direction: column;
-background-color: var(--accent);
-color: beige;
-border: 2px solid var(--border);
-border-radius: 3px;
-padding: 4px 4px;
-z-index: 10;
-gap: 5px;
-top: 80%;
-right: 0;
+.dropdown-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--accent);
+    color: beige;
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    padding: 4px 4px;
+    z-index: 10;
+    gap: 5px;
+    top: 80%;
+    right: 0;
 }

@@ -5,9 +5,15 @@
     top: 0;
     left: 0;
     z-index: 10;
-    overflow-y: auto;
     border: 2px solid black;
     background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+.song-list {
+    flex: 1;
+    overflow-y: auto;
 }
 
 .search-container {
@@ -106,4 +112,18 @@
 .result-add-btn:hover {
     background-color: var(--accent);
     box-shadow: 0 0 20px var(--accent);
+}
+
+.mini-player {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: rgba(148, 138, 138, 0.4);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 8px;
+    border-top: 2px solid var(--border);
+    border-radius: 10px;
 }
