@@ -118,7 +118,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
           <div className='mini-player'>
             <div className='miniplayer-info'>
               <img className='mini-player-img' src="" alt="" />
-            <p>{currSong?.title}</p>
+              <p>{currSong?.title}</p>
             </div>
             <div className='progressbar'>
               <div className='progressbar-fill' style={{ width: `${progressPercent}%` }}></div>
