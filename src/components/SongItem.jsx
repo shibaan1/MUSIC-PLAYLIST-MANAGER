@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react'
 import { PlaylistContext } from '../context/playlistContext'
 import './SongItem.css'
 
-const SongItem = ({ id, title, artist, url, imageUrl }) => {
+const SongItem = ({ id, title, artist, url, imageUrl, openDropdownId , setOpenDropdownId }) => {
 
   const { state, dispatch } = useContext(PlaylistContext)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const isDropdownOpen = openDropdownId === id
 
-  function handleDropdown() {
-    setIsDropdownOpen(!isDropdownOpen)
+  function handleDropdown() {g
+    setOpenDropdownId(openDropdownId === id ? null : id)
   }
 
   function handleClick() {

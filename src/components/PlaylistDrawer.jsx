@@ -9,6 +9,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [searchResults, setSearchResults] = useState([])
   const [searchText, setSearchText] = useState('')
+  const [openDropdownId, setOpenDropdownId] = useState(null)
 
   const { state, dispatch } = useContext(PlaylistContext)
 
@@ -83,7 +84,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
                       <p className='result-trackName'>{result.trackName}</p>
                       <p className='result-artistName'>{result.artistName}</p>
                       <button className='result-add-btn' onClick={() => {
-                        if (state.songs.some(g)) {
+                        if (state.songs.some(song => song.url === result.previewUrl)) {
                           alert('SONG ALREADY EXITS')
                         }
                         else {
@@ -117,6 +118,8 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
                 artist={song.artist}
                 url={song.url}
                 imageUrl={song.imageUrl}
+                openDropdownId={openDropdownId}
+                setOpenDropdownId={setOpenDropdownId}
               />
             ))}
           </div>
