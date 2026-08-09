@@ -50,6 +50,7 @@
     font-size: 1.1rem;
     cursor: pointer;
     background-color: transparent;
+    border: 2px solid var(--border);
 }
 
 .menu-btn {
@@ -59,6 +60,7 @@
     font-size: 1.1rem;
     cursor: pointer;
     background-color: transparent;
+    border: 2px solid var(--border);
 }
 
 .menu-btn:hover,

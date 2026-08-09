@@ -15,8 +15,8 @@
     background-color: beige;
     border-radius: 5px;
     padding: 5px 5px;
-    width: 45%;
-    height: 35%;
+    width: 50%;
+    height: 42%;
     box-shadow: 0 0 45px var(--accent);
     display: flex;
     flex-direction: column;
@@ -27,7 +27,8 @@
 
 .modal-title-input,
 .modal-artist-input,
-.modal-url-input {
+.modal-url-input,
+.modal-img-url {
     width: 100%;
     padding: 5px 5px;
     border: 2px solid var(--border);

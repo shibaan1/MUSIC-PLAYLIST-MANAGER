@@ -71,7 +71,8 @@ const NowPlaying = ({ onOpenDrawer }) => {
   return (
     <div className='now-playing'>
       <button className='playlist-btn' onClick={onOpenDrawer}>open playlist</button>
-      <img src="" alt="" className='now-playing-img' />
+      <img src={selectedSong?.imageUrl || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'} 
+  alt={selectedSong?.title} className='now-playing-img' />
 
       {!selectedSong ? (<p>no song to display</p>) : (
 

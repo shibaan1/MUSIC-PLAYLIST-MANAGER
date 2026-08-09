@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { PlaylistContext } from '../context/playlistContext'
 import './SongItem.css'
 
-const SongItem = ({ id, title, artist, url }) => {
+const SongItem = ({ id, title, artist, url, imageUrl }) => {
 
   const { state, dispatch } = useContext(PlaylistContext)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -22,9 +22,10 @@ const SongItem = ({ id, title, artist, url }) => {
     }
   }
   return (
+    
     <div className='song-item'>
-
-      <img className='song-img' src="" alt="" />
+     
+      <img src={imageUrl || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'} alt={title} className='song-img' />
 
       <div className='item-info'>
         <p className='item-title'>{title}</p>

@@ -90,7 +90,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
                             title: result.trackName,
                             artist: result.artistName,
                             url: result.previewUrl,
-                            image: result.artworkUrl100
+                            imageUrl: result.artworkUrl100
 
                           }
                         })
@@ -111,13 +111,14 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
                 title={song.title}
                 artist={song.artist}
                 url={song.url}
+                imageUrl={song.imageUrl}
               />
             ))}
           </div>
 
           <div className='mini-player'>
             <div className='miniplayer-info'>
-              <img className='mini-player-img' src="" alt="" />
+              <img className='mini-player-img' src={currSong?.imageUrl || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'} alt={currSong?.title} />
               <p>{currSong?.title}</p>
             </div>
             <div className='progressbar'>
