@@ -1,16 +1,93 @@
-# React + Vite
+# 🎵 Music Playlist Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based music player web app that lets users search, add, and manage songs with real audio playback.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* ✅ Search songs via iTunes API
+* ✅ Add songs manually with custom URL
+* ✅ Real audio playback using HTML5 Audio API
+* ✅ Play / Pause controls
+* ✅ Next / Previous controls
+* ✅ Shuffle and loop modes
+* ✅ Progress bar with time display
+* ✅ Playlist management — delete, move to top, play next
+* ✅ Album art display
+* ✅ Persistent playlist using localStorage
+* ✅ Slide-in playlist drawer with mini player
 
-## React Compiler
+## 🛠️ Built With
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **React 18 + Vite** — frontend framework and development environment
+* **useReducer + useContext** — state management
+* **HTML5 Audio API** — real audio playback
+* **iTunes Search API** — song discovery
+* **localStorage** — playlist persistence
+* **CSS** — responsive UI and styling
 
-## Expanding the ESLint configuration
+## 💡 Key Concepts Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **useReducer** — manages complex playlist and player state
+* **useContext** — shares player state across components
+* **HTML5 Audio API** — controls audio playback and progress
+* **iTunes API** — searches and retrieves song information
+* **localStorage + JSON** — saves playlist data across page refreshes
+* **Conditional Rendering** — dynamically displays player and playlist states
+* **Component-based architecture** — separates UI and functionality into reusable components
+
+## 📁 Project Structure
+
+```text
+music-playlist-manager/
+├── public/
+├── src/
+│   ├── components/
+│   ├── context/
+│   ├── hooks/
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## 🏃 How to Run
+
+Clone the repo:
+
+```bash
+git clone https://github.com/shibaan1/MUSIC-PLAYLIST-MANAGER.git
+cd MUSIC-PLAYLIST-MANAGER
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in the terminal.
+
+## 🎧 How to Use
+
+1. Click **Open Playlist** to open the playlist drawer.
+2. Search for songs using the search bar.
+3. Click **ADD** to add a song to the playlist.
+4. Click the play button on any song to start playback.
+5. Use the main controls to play, pause, skip, shuffle, or loop.
+6. Manage songs directly from the playlist drawer.
+
+## 🤖 Development Process
+
+This project was built with AI-assisted guidance. Claude (by Anthropic) was used as a mentor throughout development — asking questions, reviewing code, pointing out mistakes, and pushing for deeper understanding. Every line of code was written by the developer; the AI guided the thinking process, not the implementation.
+
+---
+
+*Built by @shibaan1 — One commit at a time*
