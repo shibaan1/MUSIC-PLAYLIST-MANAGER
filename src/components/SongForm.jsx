@@ -18,7 +18,15 @@ const SongForm = ({ onClose }) => {
       alert('please fill all the fields')
       return
     }
-    dispatch({ type: 'ADD_SONG', payload: { id: Date.now(), title: title, artist: artist, url: url, imageUrl: img || 'https://via.placeholder.com/50x50/4CAF50/ffffff?text=♪' } })
+
+    if (state.songs.some(song => song.url === url)) {
+      alert('SONG ALREADY EXIST')
+
+    }
+    else {
+      dispatch({ type: 'ADD_SONG', payload: { id: Date.now(), title: title, artist: artist, url: url, imageUrl: img || 'https://via.placeholder.com/50x50/4CAF50/ffffff?text=♪' } })
+    }
+
     onClose()
   }
 

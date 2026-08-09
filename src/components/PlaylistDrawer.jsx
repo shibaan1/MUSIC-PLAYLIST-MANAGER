@@ -83,17 +83,22 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
                       <p className='result-trackName'>{result.trackName}</p>
                       <p className='result-artistName'>{result.artistName}</p>
                       <button className='result-add-btn' onClick={() => {
-                        dispatch({
-                          type: 'ADD_SONG', payload: {
+                        if (state.songs.some(g)) {
+                          alert('SONG ALREADY EXITS')
+                        }
+                        else {
+                          dispatch({
+                            type: 'ADD_SONG', payload: {
 
-                            id: Date.now(),
-                            title: result.trackName,
-                            artist: result.artistName,
-                            url: result.previewUrl,
-                            imageUrl: result.artworkUrl100
+                              id: Date.now(),
+                              title: result.trackName,
+                              artist: result.artistName,
+                              url: result.previewUrl,
+                              imageUrl: result.artworkUrl100
 
-                          }
-                        })
+                            }
+                          })
+                        }
                       }}>ADD</button>
                     </div>
                   ))}
