@@ -49,7 +49,7 @@
 }
 
 .modal-submit-btn:hover {
-    background-color: #17b647;
+    background-color: var(--accent);
     box-shadow: 0 0 12px var(--accent);
 }
 

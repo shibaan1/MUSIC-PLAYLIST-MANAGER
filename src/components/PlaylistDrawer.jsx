@@ -56,7 +56,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
     <>
       {isOpen &&
         <div className='playlist-drawer'>
-          <button className='close-btn' onClick={onClose}>close</button>
+          <button className='close-btn' onClick={onClose}>CLOSE</button>
 
           <div className='search-container'>
             <input className='searchbar' type="search" placeholder='search song...' value={searchText} onChange={(e) => handleinput(e)}
@@ -66,7 +66,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
                 }
               }} />
 
-            <button className='modal-btn' onClick={() => setIsModalOpen(true)}>add song ++++</button>
+            <button className='modal-btn' onClick={() => setIsModalOpen(true)}>ADD SONG +</button>
 
             {isModalOpen && <SongForm onClose={() => setIsModalOpen(false)} />}
           </div>

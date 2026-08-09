@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react'
 import { PlaylistContext } from '../context/playlistContext'
 import './SongItem.css'
 
-const SongItem = ({ id, title, artist, url, imageUrl, openDropdownId , setOpenDropdownId }) => {
+const SongItem = ({ id, title, artist, url, imageUrl, openDropdownId, setOpenDropdownId }) => {
 
   const { state, dispatch } = useContext(PlaylistContext)
   const isDropdownOpen = openDropdownId === id
 
-  function handleDropdown() {g
+  function handleDropdown() {
     setOpenDropdownId(openDropdownId === id ? null : id)
   }
 
@@ -22,9 +22,9 @@ const SongItem = ({ id, title, artist, url, imageUrl, openDropdownId , setOpenDr
     }
   }
   return (
-    
+
     <div className='song-item'>
-     
+
       <img src={imageUrl || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'} alt={title} className='song-img' />
 
       <div className='item-info'>
@@ -33,8 +33,8 @@ const SongItem = ({ id, title, artist, url, imageUrl, openDropdownId , setOpenDr
       </div>
 
       <div className='item-controls'>
-        <button className='item-play-btn' onClick={handleClick}>play</button>
-        <button className='menu-btn' onClick={handleDropdown}>⋮ menu</button>
+        <button className='item-play-btn' onClick={handleClick}>PLAY</button>
+        <button className='menu-btn' onClick={handleDropdown}>⋮ MENU</button>
 
         {isDropdownOpen && (
           <div className='dropdown-menu'>

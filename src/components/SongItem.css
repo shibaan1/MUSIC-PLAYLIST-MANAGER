@@ -70,10 +70,6 @@
 }
 
 .dropdown-menu {
-    display: none;
-}
-
-.dropdown-menu {
     position: absolute;
     display: flex;
     flex-direction: column;

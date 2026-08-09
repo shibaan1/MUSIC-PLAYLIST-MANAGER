@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext} from 'react'
 import { PlaylistContext } from '../context/playlistContext'
 import './NowPlaying.css'
 
@@ -62,7 +62,6 @@ const NowPlaying = ({ onOpenDrawer }) => {
   function handleShuffle() {
 
     dispatch({ type: 'TOGGLE_SHUFFLE' })
-
   }
 
   function handleLoop() {
@@ -71,8 +70,8 @@ const NowPlaying = ({ onOpenDrawer }) => {
   return (
     <div className='now-playing'>
       <button className='playlist-btn' onClick={onOpenDrawer}>open playlist</button>
-      <img src={selectedSong?.imageUrl || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'} 
-  alt={selectedSong?.title} className='now-playing-img' />
+      <img src={selectedSong?.imageUrl || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'}
+        alt={selectedSong?.title} className='now-playing-img' />
 
       {!selectedSong ? (<p>no song to display</p>) : (
 
@@ -93,9 +92,9 @@ const NowPlaying = ({ onOpenDrawer }) => {
           <div className='controls'>
             <button className={`shuffle-btn ${state.shuffle ? 'active' : ''}`} onClick={handleShuffle}>{state.shuffle === true ? ('SHUFFLE ON') : ('SHUFFLE OFF')}</button>
             <div className='main-ctrl-btn'>
-              <button className='previous-btn' onClick={handlePrevious}>previous</button>
+              <button className='previous-btn' onClick={handlePrevious}>PREVIOUS</button>
               <button className='play-btn' onClick={handleClick}>{state.isPlaying ? '⏸' : '▶'}</button>
-              <button className='next-btn' onClick={handleNext}>next</button>
+              <button className='next-btn' onClick={handleNext}>NEXT</button>
             </div>
             <button className={`loop-btn ${state.loop ? 'active' : ''}`} onClick={handleLoop}>{state.loop === true ? ('LOOP ON') : ('LOOP OFF')}</button>
           </div>

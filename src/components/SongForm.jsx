@@ -24,7 +24,7 @@ const SongForm = ({ onClose }) => {
 
     }
     else {
-      dispatch({ type: 'ADD_SONG', payload: { id: Date.now(), title: title, artist: artist, url: url, imageUrl: img || 'https://via.placeholder.com/50x50/4CAF50/ffffff?text=♪' } })
+      dispatch({ type: 'ADD_SONG', payload: { id: Date.now(), title: title, artist: artist, url: url, imageUrl: img || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'} })
     }
 
     onClose()
@@ -34,13 +34,13 @@ const SongForm = ({ onClose }) => {
     <>
       <div className='modal-overlay'>
         <div className='modal-box'>
-          <button className='modal-close-btn' onClick={onClose}>close/cancel</button>
+          <button className='modal-close-btn' onClick={onClose}>CLOSE</button>
           <input className='modal-title-input' type="text" placeholder='Song-Name' value={title} onChange={(e) => setTitle(e.target.value)} />
           <input className='modal-artist-input' type="text" placeholder='Artist Name' value={artist} onChange={(e) => setArtist(e.target.value)} />
           <input className='modal-url-input' type="url" placeholder='enter url' value={url} onChange={(e) => setUrl(e.target.value)} />
           <input className='modal-img-url' type="url" placeholder='image url (optional)' value={img} onChange={(e) => setimg(e.target.value)} />
 
-          <button className='modal-submit-btn' onClick={handleSubmit}>Add Song</button>
+          <button className='modal-submit-btn' onClick={handleSubmit}>ADD SONG</button>
 
         </div>
       </div>
