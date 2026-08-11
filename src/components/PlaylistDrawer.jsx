@@ -56,6 +56,7 @@ const PlaylistDrawer = ({ isOpen, onClose }) => {
     <>
       {isOpen &&
         <div className='playlist-drawer'>
+          <h2 className='drawer-heading'>PLAYLIST DRAWER</h2>
           <button className='close-btn' onClick={onClose}>CLOSE</button>
 
           <div className='search-container'>

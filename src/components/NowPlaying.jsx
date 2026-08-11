@@ -69,7 +69,7 @@ const NowPlaying = ({ onOpenDrawer }) => {
   }
   return (
     <div className='now-playing'>
-      <button className='playlist-btn' onClick={onOpenDrawer}>open playlist</button>
+      <button className='playlist-btn' onClick={onOpenDrawer}>OPEN PLAYLIST</button>
       <img src={selectedSong?.imageUrl || 'https://placehold.co/50x50/4CAF50/ffffff?text=♪'}
         alt={selectedSong?.title} className='now-playing-img' />
 

@@ -11,6 +11,16 @@
     flex-direction: column;
 }
 
+.drawer-heading{
+    position: absolute;
+    top: 16px ;
+    font-size: 1.8rem;
+    font-weight: bold;
+    align-self: center;
+    color: var(--text-primary);
+   font-family: "Playwrite IT Moderna", cursive;
+}
+
 .song-list {
     flex: 1;
     overflow-y: auto;

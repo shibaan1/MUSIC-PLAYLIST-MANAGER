@@ -18,10 +18,15 @@
     padding: 8px 8px;
     cursor: pointer;
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 1.2rem;
+    font-weight: bold;
     position: absolute;
     top: 25px;
     left: 25px;
+}
+
+.playlist-btn:hover{
+    box-shadow: 0 0 30px var(--accent);
 }
 
 .now-playing-img {
